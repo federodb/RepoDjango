@@ -3,41 +3,21 @@ from AppCoder.models import Curso
 from django.http import HttpResponse
 from django.template import Template, Context
 
-# Create your views here.
-def curso(request, nombre, numero):
-
-    curso = Curso(nombre=nombre, camada=int(numero))
-    curso.save()
-    doc = f"Curso: {curso.nombre}<br>Camada: {curso.camada}"
-    return HttpResponse(doc)
 
 def inicio(request):
-    return HttpResponse("Vista Inicio")
+    return render(request, "AppCoder/inicio.html")
 
-def cursos(request):
-    return HttpResponse("Vista Cursos")
+def contacto(request):
+    return render(request, "AppCoder/contacto.html")
 
-def profesores(request):
-    return HttpResponse("Vista profesores")
+def rutinas(request):
+    return render(request, "AppCoder/rutinas.html")
 
-def estudiantes(request):
-    return HttpResponse("Vista Estudiantes")
+def iniciosesion(request):
+    return render(request, "AppCoder/iniciosesion.html")
 
-def entregables(request):
-    return HttpResponse("Vista entregables")
+def quienessomos(request):
+    return render(request, "AppCoder/quienessomos.html")
 
-# Renderizamos la template descargada por BootStrap
-
-def bootstrap(request):
-
-    mihtml = open('./AppCoder/templates/AppCoder/index.html')
-
-    template = Template(mihtml.read())
-
-    mihtml.close()
-
-    contexto = Context()
-
-    documento = template.render(contexto)
-
-    return HttpResponse(documento)
+def crearcuenta(request):
+    return render(request, "AppCoder/crearcuenta.html")
